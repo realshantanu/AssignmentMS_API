@@ -18,27 +18,21 @@ There are 5 resources:
 - A teacher can list all assignments submitted to him
 - A teacher can grade an assignment submitted to him
 
-## Challenge
+## Completed Challenge
 
-Please fork the repository into your account and continue the development in your fork.
-
-Your tasks
-- Add missing APIs mentioned here and get the automated tests to pass
+### Tasks Completed
+- Add missing APIs mentioned and get the automated tests to pass
 - Add tests for grading API
-- Please be aware that intentional bugs have been incorporated into the application, leading to test failures. Kindly address and rectify these issues as part of the assignment.
-- All tests should pass
-- Get the test coverage to 94% or above
-- There are certain SQL tests present inside `tests/SQL/`. You have to write SQL in following files:
+- Intentional bugs have been fixed into the application, which were leading to test failures. 
+- All tests passed
+- Got the test coverage 94%
+- There are certain SQL tests present inside `tests/SQL/`. written SQL in following files:
     - count_grade_A_assignments_by_teacher_with_max_grading.sql
     - number_of_assignments_per_state.sql
-- Optionally, Dockerize your application by creating a Dockerfile and a docker-compose.yml file, providing clear documentation on building and running the application with Docker, to stand out in your submission
-
-***Once you are done with your task, please use [this form](https://forms.gle/dJLNMyBmBCJSv6EH7) to complete your submission.***
-
-You will hear back within 48 hours from us via email. 
+- Dockerize application by creating a Dockerfile and a docker-compose.yml file
 
 
-## Available APIs
+## APIs
 
 ### Auth
 - header: "X-Principal"
@@ -214,10 +208,6 @@ response:
     }
 }
 ```
-
-## Missing APIs
-
-You'll need to implement these APIs
 
 ### GET /principal/assignments
 
