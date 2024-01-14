@@ -97,3 +97,23 @@ def test_assignment_resubmit_error(client, h_student_1):
     assert response.status_code == 400
     assert error_response['error'] == 'FyleError'
     assert error_response["message"] == 'only a draft assignment can be submitted'
+
+@pytest.mark.usefixtures("transaction_block")
+def test_upsert_assignment_edit(client, h_student_1):
+    """
+    success case: check if the student can edit an existing assignment
+    """
+    content = 'ABCD UpdatePost'
+
+    response = client.post(
+        '/student/assignments',
+        headers=h_student_1,
+        json={
+            'id': 2,
+            'content': content
+        }
+    )
+
+    assert response.status_code == 200
+    data = response.json['data']
+    assert data['content'] == content
