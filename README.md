@@ -1,25 +1,21 @@
-# Fyle Backend Challenge
+# AssignmentMS_API: A REST API for Educational Assignments(Fyle Backend Assignment)
 
-## Who is this for?
+## Details
 
-This challenge is meant for candidates who wish to intern at Fyle and work with our engineering team. You should be able to commit to at least 6 months of dedicated time for internship.
+AssignmentMS_API is a project that aims to provide a simple and efficient way to manage assignments for students, teachers, and principals in an educational institution. The project uses Python 3.8 as the backend language, SQLite as the database, and SQLAlachemy as the database management tool. The project follows the RESTful principles and uses JSON as the data format.
 
-## Why work at Fyle?
+## The main features of the project are:
 
-Fyle is a fast-growing Expense Management SaaS product. We are ~40 strong engineering team at the moment. 
+- **Authentication and authorization** using X-Principal header and user_id and student_id values
+- **CRUD (Create, Read, Update, Delete) operations** for users, principals, students, teachers, and assignments
+- **Submission and grading of assignments** by students and teachers
+- **Re-grading of assignments** by principals
+- **Validation and exception handling** for user inputs and errors
+- **Unit testing** using pytest and coverage
+- **Dockerization** using Dockerfile and docker-compose.yml
 
-We are an extremely transparent organization. Check out our [careers page](https://careers.fylehq.com) that will give you a glimpse of what it is like to work at Fyle. Also, check out our Glassdoor reviews [here](https://www.glassdoor.co.in/Reviews/Fyle-Reviews-E1723235.htm). You can read stories from our teammates [here](https://stories.fylehq.com).
-
-
-## Challenge outline
-
-This challenge involves writing a backend service for a classroom. The challenge is described in detail [here](./Application.md)
-
-
-## What happens next?
-
-You will hear back within 48 hours from us via email. 
-
+## API Details
+API details are discussed [here](Application.md)
 
 ## Installation
 
@@ -39,6 +35,9 @@ pip install -r requirements.txt
 export FLASK_APP=core/server.py
 rm core/store.sqlite3
 flask db upgrade -d core/migrations/
+
+ALT
+bash reset.sh
 ```
 ### Start Server
 
@@ -54,3 +53,25 @@ pytest -vvv -s tests/
 # pytest --cov
 # open htmlcov/index.html
 ```
+
+### Run Docker
+
+```
+docker-compose build
+docker-compose up
+```
+
+## Screenshots
+### Test Coverage
+#### Result(94%)
+![Coverage Report](result/screenshots/coverageReport.jpeg)
+
+### Test Cases
+#### Passes(27)
+![Test Report](result/screenshots/pytestReport.jpeg)
+
+
+### Docker Working Screenshot
+![Docker Build](result/screenshots/Docker_build.jpeg)
+
+![Docker Run](result/screenshots/Docker_run.jpeg)
