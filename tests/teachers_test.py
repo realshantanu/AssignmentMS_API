@@ -1,3 +1,6 @@
+import pytest
+from core import db
+
 def test_get_assignments_teacher_1(client, h_teacher_1):
     response = client.get(
         '/teacher/assignments',
@@ -10,6 +13,14 @@ def test_get_assignments_teacher_1(client, h_teacher_1):
     for assignment in data:
         assert assignment['teacher_id'] == 1
         assert assignment['state'] in ['SUBMITTED', 'GRADED']
+
+@pytest.fixture
+def transaction_block(request):
+    db.session.begin(subtransactions=True)
+    request.addfinalizer(db.session.rollback)
+
+@pytest.mark.usefixtures("transaction_block")
+
 
 
 def test_get_assignments_teacher_2(client, h_teacher_2):
@@ -44,7 +55,7 @@ def test_grade_assignment_cross(client, h_teacher_2):
 
     assert data['error'] == 'FyleError'
 
-
+@pytest.mark.usefixtures("transaction_block")
 def test_grade_assignment_bad_grade(client, h_teacher_1):
     """
     failure case: API should allow only grades available in enum
@@ -82,7 +93,7 @@ def test_grade_assignment_bad_assignment(client, h_teacher_1):
 
     assert data['error'] == 'FyleError'
 
-
+@pytest.mark.usefixtures("transaction_block")
 def test_grade_assignment_draft_assignment(client, h_teacher_1):
     """
     failure case: only a submitted assignment can be graded
